@@ -12,6 +12,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		023A24A710124D529FBEF088 /* Quattrocento-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1C5BF6C08694697BB03DC89 /* Quattrocento-Bold.ttf */; };
+		05DD097A65E946E2A9A0B78B /* Quattrocento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6EB735498ADC432F82A062B9 /* Quattrocento-Regular.ttf */; };
+		537B5EBCB53641668809E12B /* QuattrocentoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C155ABC54FE4886A30E5F6E /* QuattrocentoSans-Bold.ttf */; };
+		C9A5916749DB407A978596BE /* QuattrocentoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 155543A5113844A1A0D5110E /* QuattrocentoSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Foodie/main.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Foodie/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		C1C5BF6C08694697BB03DC89 /* Quattrocento-Bold.ttf */ = {isa = PBXFileReference; name = "Quattrocento-Bold.ttf"; path = "../assets/fonts/Quattrocento-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6EB735498ADC432F82A062B9 /* Quattrocento-Regular.ttf */ = {isa = PBXFileReference; name = "Quattrocento-Regular.ttf"; path = "../assets/fonts/Quattrocento-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0C155ABC54FE4886A30E5F6E /* QuattrocentoSans-Bold.ttf */ = {isa = PBXFileReference; name = "QuattrocentoSans-Bold.ttf"; path = "../assets/fonts/QuattrocentoSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		155543A5113844A1A0D5110E /* QuattrocentoSans-Regular.ttf */ = {isa = PBXFileReference; name = "QuattrocentoSans-Regular.ttf"; path = "../assets/fonts/QuattrocentoSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 				00E356EF1AD99517003FC87E /* FoodieTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				9BB08F54FE2344A681FA4C08 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -123,6 +132,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		9BB08F54FE2344A681FA4C08 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				C1C5BF6C08694697BB03DC89 /* Quattrocento-Bold.ttf */,
+				6EB735498ADC432F82A062B9 /* Quattrocento-Regular.ttf */,
+				0C155ABC54FE4886A30E5F6E /* QuattrocentoSans-Bold.ttf */,
+				155543A5113844A1A0D5110E /* QuattrocentoSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -214,6 +235,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				023A24A710124D529FBEF088 /* Quattrocento-Bold.ttf in Resources */,
+				05DD097A65E946E2A9A0B78B /* Quattrocento-Regular.ttf in Resources */,
+				537B5EBCB53641668809E12B /* QuattrocentoSans-Bold.ttf in Resources */,
+				C9A5916749DB407A978596BE /* QuattrocentoSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
