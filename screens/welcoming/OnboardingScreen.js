@@ -1,18 +1,37 @@
 import * as React from 'react';
-import {View, Button} from 'react-native';
-import TitleText from '../../components/text/TitleText';
+import {StyleSheet} from 'react-native';
+import ScreenView from '../../components/Screen';
+import Slyder from '../../components/Slyder';
 
 function OnboardingScreen({navigation}) {
+  const onboardingData = [
+    {
+      imageUrl: require('../../assets/images/cocktail-sm.jpg'),
+      heading: 'Find the ingredients for your favorite cocktail...',
+      key: 'first',
+    },
+    {
+      imageUrl: require('../../assets/images/wine-sm.jpg'),
+      heading: 'Order some wine or beer with fast delivery...',
+      key: 'second',
+    },
+    {
+      imageUrl: require('../../assets/images/store-sm.jpg'),
+      heading: 'Or drop by in one of our stores',
+      key: 'third',
+    },
+  ];
+
+  const styles = StyleSheet.create({
+    screen: {
+      flex: 1,
+    },
+  });
+
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <View>
-        <TitleText>Onboarding Screen</TitleText>
-        <Button
-          title="Go to Log in"
-          onPress={() => navigation.navigate('Log In')}
-        />
-      </View>
-    </View>
+    <ScreenView style={styles.screen}>
+      <Slyder data={onboardingData} />
+    </ScreenView>
   );
 }
 
