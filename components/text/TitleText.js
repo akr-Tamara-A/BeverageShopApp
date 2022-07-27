@@ -7,9 +7,9 @@ const TitleText = ({children, style}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'QuattrocentoSans-Regular',
+    fontFamily: 'Quattrocento-Regular',
     fontWeight: 'normal',
-    fontSize: 28,
+    fontSize: 24,
   },
 });
 

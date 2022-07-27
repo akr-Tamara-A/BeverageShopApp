@@ -7,9 +7,9 @@ const NormalText = ({children, style}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Quattrocento-Regular',
+    fontFamily: 'QuattrocentoSans-Regular',
     fontWeight: 'normal',
-    fontSize: 18,
+    fontSize: 16,
   },
 });
 

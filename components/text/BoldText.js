@@ -7,9 +7,9 @@ const BoldText = ({children, style}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Quattrocento-Bold',
+    fontFamily: 'QuattrocentoSans-Bold',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
   },
 });
 

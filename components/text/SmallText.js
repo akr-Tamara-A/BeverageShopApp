@@ -7,7 +7,7 @@ const SmallText = ({children, style}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Quattrocento-Regular',
+    fontFamily: 'QuattrocentoSans-Regular',
     fontWeight: 'normal',
     fontSize: 14,
   },
