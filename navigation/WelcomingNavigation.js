@@ -6,14 +6,23 @@ import LogInWithPhoneScreen from '../screens/welcoming/LogInWithPhoneScreen';
 import SighInScreen from '../screens/welcoming/SighInScreen';
 import VerifyPhoneNumberScreen from '../screens/welcoming/VerifyPhoneNumberScreen';
 import LocationScreen from '../screens/welcoming/LocationScreen';
+import {headerBarStyle} from '../styles/headerBarStyle';
 
 const WelcomingStack = createNativeStackNavigator();
 
 export default function WelcomingNavigation() {
   return (
-    <WelcomingStack.Navigator>
-      <WelcomingStack.Screen name="Onboarding" component={OnboardingScreen} />
-      <WelcomingStack.Screen name="Log In" component={LogInScreen} />
+    <WelcomingStack.Navigator screenOptions={headerBarStyle}>
+      <WelcomingStack.Screen
+        name="Onboarding"
+        component={OnboardingScreen}
+        options={{title: ''}}
+      />
+      <WelcomingStack.Screen
+        name="Log In"
+        component={LogInScreen}
+        options={{title: 'User authorization'}}
+      />
       <WelcomingStack.Screen
         name="Log In With Phone"
         component={LogInWithPhoneScreen}
