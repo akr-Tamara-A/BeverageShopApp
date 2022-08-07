@@ -6,13 +6,15 @@ import BoldText from '../text/BoldText';
 const MainButton = ({title, onPress}) => {
   const styles = StyleSheet.create({
     button: {
-      // minWidth: '75%',
+      borderColor: COLORS.color8,
+      borderWidth: 5,
       backgroundColor: COLORS.color8,
       paddingHorizontal: 50,
       paddingVertical: 10,
       justifyContent: 'center',
       alignItems: 'center',
       marginVertical: 10,
+      borderRadius: 2,
     },
     text: {
       color: COLORS.color9,

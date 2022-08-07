@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useRef, useState, useLayoutEffect, useEffect} from 'react';
 import {View, StyleSheet, Dimensions, Animated} from 'react-native';
 import MainButton from './buttons/MainButton';
 import SlyderItem from './SlyderItem';
@@ -8,17 +8,25 @@ const windowWidth = Dimensions.get('window').width;
 
 function Slyder({data}) {
   const navigation = useNavigation();
-  const ref = React.useRef(null);
-  const [flatlistIndex, setFlatlistIndex] = React.useState(0);
-  const [isLastPage, setislastPage] = React.useState(false);
-  const scrollX = React.useRef(new Animated.Value(0)).current;
+  const ref = useRef(null);
+  const [flatlistIndex, setFlatlistIndex] = useState(0);
+  const [isLastPage, setislastPage] = useState(false);
+  const scrollX = useRef(new Animated.Value(0)).current;
 
-  React.useEffect(() => {
+  /** */
+  useEffect(() => {
     ref.current?.scrollToIndex({
       index: flatlistIndex,
       animated: true,
     });
   }, [flatlistIndex]);
+
+  /** */
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: data[flatlistIndex].heading,
+    });
+  }, [navigation, flatlistIndex, data]);
 
   /** */
   function handleNextSlide() {
@@ -89,6 +97,7 @@ function Slyder({data}) {
 
 export default Slyder;
 
+/** */
 const styles = StyleSheet.create({
   button: {
     position: 'absolute',

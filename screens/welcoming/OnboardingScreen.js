@@ -1,38 +1,36 @@
-import * as React from 'react';
-import {StyleSheet} from 'react-native';
+import React, {useLayoutEffect} from 'react';
 import ScreenView from '../../components/Screen';
 import Slyder from '../../components/Slyder';
 
-function OnboardingScreen({navigation}) {
-  const onboardingData = [
-    {
-      imageUrl: require('../../assets/images/cocktail-sm.jpg'),
-      heading: 'Find the ingredients for your favorite cocktail...',
-      key: 'first',
-    },
-    {
-      imageUrl: require('../../assets/images/wine-sm.jpg'),
-      heading: 'Order some wine or beer with fast delivery...',
-      key: 'second',
-    },
-    {
-      imageUrl: require('../../assets/images/store-sm.jpg'),
-      heading: 'Or drop by in one of our stores',
-      key: 'third',
-    },
-  ];
+const onboardingData = [
+  {
+    imageUrl: require('../../assets/images/cocktail-sm.jpg'),
+    heading: 'Find ingredients for cocktail',
+    key: 'first',
+  },
+  {
+    imageUrl: require('../../assets/images/wine-sm.jpg'),
+    heading: 'Order some wine or beer',
+    key: 'second',
+  },
+  {
+    imageUrl: require('../../assets/images/store-sm.jpg'),
+    heading: 'Or drop by in one of our stores',
+    key: 'third',
+  },
+];
 
-  const styles = StyleSheet.create({
-    screen: {
-      flex: 1,
-    },
-  });
+function OnboardingScreen({navigation}) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: onboardingData[0].heading,
+    });
+  }, [navigation]);
 
   return (
-    <ScreenView style={styles.screen}>
+    <ScreenView>
       <Slyder data={onboardingData} />
     </ScreenView>
   );
 }
-
 export default OnboardingScreen;
