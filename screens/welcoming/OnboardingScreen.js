@@ -1,6 +1,8 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import ScreenView from '../../components/Screen';
+import Splashscreen from '../../components/SplashScreen';
 import Slyder from '../../components/Slyder';
+import {COLORS} from '../../styles/defaultColors';
 
 const onboardingData = [
   {
@@ -21,15 +23,31 @@ const onboardingData = [
 ];
 
 function OnboardingScreen({navigation}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerStyle: {
+        backgroundColor: isLoaded ? COLORS.background : COLORS.color5,
+      },
       title: onboardingData[0].heading,
     });
-  }, [navigation]);
+  }, [navigation, isLoaded]);
+
+  function handleOnEnd(bool) {
+    if (bool) {
+      setIsLoaded(true);
+    }
+  }
 
   return (
-    <ScreenView>
-      <Slyder data={onboardingData} />
+    <ScreenView
+      style={{backgroundColor: isLoaded ? COLORS.background : COLORS.color5}}>
+      {isLoaded ? (
+        <Slyder data={onboardingData} />
+      ) : (
+        <Splashscreen onEnd={handleOnEnd} />
+      )}
     </ScreenView>
   );
 }
