@@ -26,13 +26,23 @@ export default function WelcomingNavigation() {
       <WelcomingStack.Screen
         name="Log In With Phone"
         component={LogInWithPhoneScreen}
+        options={{title: ''}}
       />
-      <WelcomingStack.Screen name="Sigh In" component={SighInScreen} />
+      <WelcomingStack.Screen
+        name="Sigh In"
+        component={SighInScreen}
+        options={{title: ''}}
+      />
       <WelcomingStack.Screen
         name="Verify Phone Number"
         component={VerifyPhoneNumberScreen}
+        options={{title: ''}}
       />
-      <WelcomingStack.Screen name="Location" component={LocationScreen} />
+      <WelcomingStack.Screen
+        name="Location"
+        component={LocationScreen}
+        options={{title: ''}}
+      />
     </WelcomingStack.Navigator>
   );
 }
