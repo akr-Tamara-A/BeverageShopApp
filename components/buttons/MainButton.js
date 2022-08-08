@@ -8,7 +8,7 @@ const MainButton = ({title, onPress, disabled}) => {
     button: {
       borderColor: disabled ? COLORS.color7 : COLORS.color8,
       borderWidth: 5,
-      backgroundColor: disabled ? 'transparent' : COLORS.color8,
+      backgroundColor: disabled ? COLORS.color7 : COLORS.color8,
       paddingHorizontal: 50,
       paddingVertical: 10,
       justifyContent: 'center',
