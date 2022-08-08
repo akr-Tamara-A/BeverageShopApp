@@ -3,12 +3,12 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 import {COLORS} from '../../styles/defaultColors';
 import BoldText from '../text/BoldText';
 
-const MainButton = ({title, onPress}) => {
+const MainButton = ({title, onPress, disabled}) => {
   const styles = StyleSheet.create({
     button: {
-      borderColor: COLORS.color8,
+      borderColor: disabled ? COLORS.color7 : COLORS.color8,
       borderWidth: 5,
-      backgroundColor: COLORS.color8,
+      backgroundColor: disabled ? 'transparent' : COLORS.color8,
       paddingHorizontal: 50,
       paddingVertical: 10,
       justifyContent: 'center',
@@ -23,7 +23,10 @@ const MainButton = ({title, onPress}) => {
   });
 
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={onPress}
+      disabled={disabled}>
       <BoldText style={styles.text}>{title}</BoldText>
     </TouchableOpacity>
   );
