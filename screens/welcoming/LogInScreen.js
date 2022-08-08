@@ -1,16 +1,35 @@
 import * as React from 'react';
-import {Animated, StyleSheet, View, Easing} from 'react-native';
+import {
+  Animated,
+  StyleSheet,
+  View,
+  Easing,
+  Modal,
+  Dimensions,
+} from 'react-native';
 import ScreenView from '../../components/Screen';
 import NormalText from '../../components/text/NormalText';
+import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import SecondaryButton from '../../components/buttons/SecondaryButton';
+import SvgButton from '../../components/buttons/SvgButton';
 import IconButton from '../../components/buttons/IconButton';
 import {COLORS} from '../../styles/defaultColors';
+import {IconClose} from '../../components/icons/UIIcons';
+
+const {width, height} = Dimensions.get('window');
+
+const MODAL_WIDTH = width * 0.8;
+const MODAL_HEIGHT = height * 0.7;
 
 function LogInWithPhoneScreen({navigation}) {
   const translateYa = new Animated.Value(0);
   const translateYb = new Animated.Value(0);
 
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [authorization, setAuthorization] = React.useState('');
+
+  /** */
   React.useEffect(() => {
     Animated.parallel([
       Animated.loop(
@@ -34,6 +53,7 @@ function LogInWithPhoneScreen({navigation}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /** */
   return (
     <ScreenView style={styles.screen}>
       <View style={styles.bubblesContainer}>
@@ -80,17 +100,26 @@ function LogInWithPhoneScreen({navigation}) {
           <IconButton
             label="Facebook"
             icon={require('../../assets/icons/social/facebook.png')}
-            onPress={() => {}}
+            onPress={() => {
+              setModalVisible(true);
+              setAuthorization('Facebook');
+            }}
           />
           <IconButton
             label="Google"
             icon={require('../../assets/icons/social/google.png')}
-            onPress={() => {}}
+            onPress={() => {
+              setModalVisible(true);
+              setAuthorization('Google');
+            }}
           />
           <IconButton
             label="Whatsapp"
             icon={require('../../assets/icons/social/whatsapp.png')}
-            onPress={() => {}}
+            onPress={() => {
+              setModalVisible(true);
+              setAuthorization('Whatsapp');
+            }}
           />
         </View>
       </View>
@@ -98,6 +127,39 @@ function LogInWithPhoneScreen({navigation}) {
         <NormalText textColor="light">Don`t have account?</NormalText>
         <SecondaryButton title="sigh up" onPress={() => {}} />
       </View>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.modal}>
+          <View style={styles.modalContainer}>
+            <View style={styles.closeButton}>
+              <SvgButton
+                background={false}
+                icon={IconClose}
+                onPress={() => {
+                  setModalVisible(false);
+                  setAuthorization('');
+                }}>
+                <IconClose />
+              </SvgButton>
+            </View>
+            <TitleBoldText>This is fake authorization</TitleBoldText>
+            <TitleBoldText>{authorization}</TitleBoldText>
+            <MainButton
+              title="Click to fake log in"
+              onPress={() => {
+                setModalVisible(false);
+                setAuthorization('');
+                navigation.navigate('App');
+              }}
+            />
+          </View>
+        </View>
+      </Modal>
     </ScreenView>
   );
 }
@@ -131,5 +193,32 @@ const styles = StyleSheet.create({
   sighUpButton: {
     margin: 40,
     alignItems: 'center',
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  closeButton: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  modalContainer: {
+    width: MODAL_WIDTH,
+    height: MODAL_HEIGHT,
+    backgroundColor: COLORS.color10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
 });

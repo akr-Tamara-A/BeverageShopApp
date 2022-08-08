@@ -3,7 +3,7 @@ import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {COLORS} from '../../styles/defaultColors';
 import SmallText from '../text/SmallText';
 
-const IconButton = ({icon, label, onPress}) => {
+const SvgButton = ({children, label, background, onPress}) => {
   const styles = StyleSheet.create({
     button: {
       padding: 10,
@@ -11,7 +11,9 @@ const IconButton = ({icon, label, onPress}) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 3,
-      backgroundColor: COLORS.color7,
+      backgroundColor: background ? COLORS.color7 : 'transparent',
+    },
+    shadow: {
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -33,11 +35,13 @@ const IconButton = ({icon, label, onPress}) => {
   });
 
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Image style={styles.icon} source={icon} />
+    <TouchableOpacity
+      style={background ? [styles.button, styles.shadow] : [styles.button]}
+      onPress={onPress}>
+      {children}
       {!!label && <SmallText style={styles.label}>{label}</SmallText>}
     </TouchableOpacity>
   );
 };
 
-export default IconButton;
+export default SvgButton;
