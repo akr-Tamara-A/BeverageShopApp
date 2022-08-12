@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {Animated, StyleSheet, View, Easing, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput} from 'react-native';
 import ScreenView from '../../components/Screen';
 import SmallText from '../../components/text/SmallText';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
-import SecondaryButton from '../../components/buttons/SecondaryButton';
-import IconButton from '../../components/buttons/IconButton';
 import {COLORS} from '../../styles/defaultColors';
 import {IconCall} from '../../components/icons/UXIcons';
 
@@ -35,7 +33,7 @@ function LogInWithPhoneScreen({navigation}) {
       <View style={styles.screen}>
         <View style={styles.info}>
           <View style={styles.icon}>
-            <IconCall />
+            <IconCall fill={COLORS.color8} />
           </View>
           <View style={styles.title}>
             <TitleBoldText textColor="light">
@@ -52,8 +50,8 @@ function LogInWithPhoneScreen({navigation}) {
           </View>
           <TextInput
             style={styles.input}
-            placeholder="(555) 555-5555"
-            placeholderTextColor={COLORS.color5}
+            placeholder="(000) 000-0000"
+            placeholderTextColor={COLORS.color3}
             keyboardType="phone-pad"
             value={mobileNumber}
             onChangeText={phoneStyling}
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING * 2,
   },
   info: {
-    marginBottom: SPACING * 4,
+    marginBottom: SPACING * 2,
   },
   title: {
     marginBottom: SPACING,
@@ -96,9 +94,10 @@ const styles = StyleSheet.create({
     marginBottom: SPACING * 2,
     backgroundColor: COLORS.color2,
     borderRadius: 10,
-    paddingLeft: SPACING * 4,
+    paddingLeft: SPACING * 5,
     paddingRight: SPACING * 2,
     paddingVertical: SPACING,
+    fontSize: 20,
   },
   inputIcon: {
     position: 'absolute',
