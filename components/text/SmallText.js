@@ -8,6 +8,7 @@ const SmallText = ({children, style, textColor}) => {
       fontFamily: 'QuattrocentoSans-Regular',
       fontWeight: 'normal',
       fontSize: 14,
+      lineHeight: 20,
       color: textColor === 'light' ? COLORS.color9 : COLORS.color8,
     },
   });
