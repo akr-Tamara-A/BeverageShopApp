@@ -2,10 +2,12 @@ import * as React from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 import ScreenView from '../../components/Screen';
 import SmallText from '../../components/text/SmallText';
+import BoldText from '../../components/text/BoldText';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import {COLORS} from '../../styles/defaultColors';
 import {IconCall} from '../../components/icons/UXIcons';
+import {phoneStyling} from '../../utils/utils';
 
 const SPACING = 10;
 
@@ -19,13 +21,11 @@ function LogInWithPhoneScreen({navigation}) {
   }, [mobileNumber]);
 
   /** */
-  function phoneStyling(phone) {
-    const value = phone.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-    const styledPhone = !value[2]
-      ? value[1]
-      : '(' + value[1] + ') ' + value[2] + (value[3] ? '-' + value[3] : '');
+  function handleChangeText(phone) {
+    const styledPhone = phoneStyling(phone);
     onChangeMobileNumber(styledPhone);
   }
+
   /** */
   return (
     <ScreenView
@@ -45,17 +45,20 @@ function LogInWithPhoneScreen({navigation}) {
           </SmallText>
         </View>
         <View>
-          <View style={styles.inputIcon}>
-            <IconCall fill={COLORS.color5} height={30} width={30} />
+          <BoldText textColor="light">Mobile number</BoldText>
+          <View>
+            <View style={styles.inputIcon}>
+              <IconCall fill={COLORS.color5} height={30} width={30} />
+            </View>
+            <TextInput
+              style={styles.input}
+              placeholder="(000) 000-0000"
+              placeholderTextColor={COLORS.color3}
+              keyboardType="phone-pad"
+              value={mobileNumber}
+              onChangeText={handleChangeText}
+            />
           </View>
-          <TextInput
-            style={styles.input}
-            placeholder="(000) 000-0000"
-            placeholderTextColor={COLORS.color3}
-            keyboardType="phone-pad"
-            value={mobileNumber}
-            onChangeText={phoneStyling}
-          />
         </View>
         <MainButton
           title="Continue"
@@ -74,6 +77,7 @@ export default LogInWithPhoneScreen;
 const styles = StyleSheet.create({
   screen: {
     height: '80%',
+    width: '80%',
   },
   icon: {
     width: 60,
