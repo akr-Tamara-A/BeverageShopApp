@@ -2,10 +2,12 @@ import React, {useState, useRef} from 'react';
 import {View, StyleSheet, TextInput} from 'react-native';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import SmallText from '../../components/text/SmallText';
+import NormalText from '../../components/text/NormalText';
 import ScreenView from '../../components/Screen';
 import {IconMessage} from '../../components/icons/UXIcons';
 import {COLORS} from '../../styles/defaultColors';
 import MainButton from '../../components/buttons/MainButton';
+import SecondaryButton from '../../components/buttons/SecondaryButton';
 
 const phoneNumber = '(000)000-0000';
 const SPACING = 10;
@@ -87,6 +89,16 @@ function VerifyPhoneNumberScreen({navigation}) {
           disabled={disabled}
           onPress={() => !disabled && navigation.navigate('App')}
         />
+        <View style={styles.bottomBlock}>
+          <NormalText textColor="light">Code not received?</NormalText>
+          <NormalText textColor="light">
+            Check your phone number and try again
+          </NormalText>
+          <SecondaryButton
+            title="Try again"
+            onPress={() => navigation.navigate('Log In With Phone')}
+          />
+        </View>
       </View>
     </ScreenView>
   );
@@ -97,6 +109,7 @@ export default VerifyPhoneNumberScreen;
 const styles = StyleSheet.create({
   screen: {
     height: '80%',
+    width: '80%',
   },
   icon: {
     width: 60,
@@ -125,5 +138,10 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING,
     fontSize: 20,
     textAlign: 'center',
+  },
+  bottomBlock: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
