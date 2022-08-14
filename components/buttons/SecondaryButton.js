@@ -3,7 +3,7 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 import {COLORS} from '../../styles/defaultColors';
 import BoldText from '../text/BoldText';
 
-const SecondaryButton = ({title, onPress}) => {
+const SecondaryButton = ({title, onPress, disabled}) => {
   const styles = StyleSheet.create({
     button: {
       borderColor: COLORS.color7,
@@ -31,7 +31,10 @@ const SecondaryButton = ({title, onPress}) => {
   });
 
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={onPress}
+      disabled={disabled}>
       <BoldText style={styles.text}>{title}</BoldText>
     </TouchableOpacity>
   );
