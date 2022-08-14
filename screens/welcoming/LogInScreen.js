@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Animated,
   StyleSheet,
@@ -26,11 +26,11 @@ function LogInWithPhoneScreen({navigation}) {
   const translateYa = new Animated.Value(0);
   const translateYb = new Animated.Value(0);
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-  const [authorization, setAuthorization] = React.useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [authorization, setAuthorization] = useState('');
 
   /** */
-  React.useEffect(() => {
+  useEffect(() => {
     Animated.parallel([
       Animated.loop(
         Animated.timing(translateYa, {
@@ -125,7 +125,10 @@ function LogInWithPhoneScreen({navigation}) {
       </View>
       <View style={styles.sighUpButton}>
         <NormalText textColor="light">Don`t have account?</NormalText>
-        <SecondaryButton title="sigh up" onPress={() => {}} />
+        <SecondaryButton
+          title="sigh up"
+          onPress={() => navigation.navigate('Sigh In')}
+        />
       </View>
       <Modal
         animationType="fade"
