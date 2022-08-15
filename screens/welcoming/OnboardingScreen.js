@@ -3,6 +3,7 @@ import ScreenView from '../../components/Screen';
 import Splashscreen from '../../components/SplashScreen';
 import Slyder from '../../components/Slyder';
 import {COLORS} from '../../styles/defaultColors';
+import {View} from 'react-native';
 
 const onboardingData = [
   {
@@ -27,9 +28,6 @@ function OnboardingScreen({navigation}) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerStyle: {
-        backgroundColor: isLoaded ? COLORS.background : COLORS.color5,
-      },
       title: onboardingData[0].heading,
     });
   }, [navigation, isLoaded]);
@@ -41,8 +39,7 @@ function OnboardingScreen({navigation}) {
   }
 
   return (
-    <ScreenView
-      style={{backgroundColor: isLoaded ? COLORS.background : COLORS.color5}}>
+    <ScreenView>
       {isLoaded ? (
         <Slyder data={onboardingData} />
       ) : (

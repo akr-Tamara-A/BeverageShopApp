@@ -37,7 +37,7 @@ function SighInScreen({navigation}) {
   const [password, onChangePassword] = useState('');
   const [viewPassword, setViewPassword] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
 
   useEffect(() => {
     const state =
@@ -88,12 +88,12 @@ function SighInScreen({navigation}) {
               <BoldText textColor="light">Mobile number</BoldText>
               <View>
                 <View style={[styles.inputIcon, styles.inputIconLeft]}>
-                  <IconCall fill={COLORS.color5} height={30} width={30} />
+                  <IconCall fill={COLORS.primaryDark} height={30} width={30} />
                 </View>
                 <TextInput
                   style={[styles.input, styles.inputLeftIcon]}
                   placeholder="(000) 000-0000"
-                  placeholderTextColor={COLORS.color3}
+                  placeholderTextColor={COLORS.backgroundTransparent}
                   keyboardType="phone-pad"
                   value={mobileNumber}
                   onChangeText={handleChangePhone}
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 60,
     height: 60,
-    backgroundColor: COLORS.color10,
+    backgroundColor: COLORS.secondaryLight,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: SPACING * 2,
-    backgroundColor: COLORS.color2,
+    backgroundColor: COLORS.secondaryLight,
     borderRadius: 10,
     paddingHorizontal: SPACING * 2,
     paddingVertical: SPACING,
@@ -246,8 +246,8 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: MODAL_WIDTH,
     height: MODAL_HEIGHT,
-    backgroundColor: COLORS.color10,
-    justifyContent: 'center',
+    backgroundColor: COLORS.accent,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingVertical: 20,
     shadowColor: '#000',

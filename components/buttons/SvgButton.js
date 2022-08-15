@@ -11,7 +11,7 @@ const SvgButton = ({children, label, background, onPress}) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 3,
-      backgroundColor: background ? COLORS.color7 : 'transparent',
+      backgroundColor: background ? COLORS.background : 'transparent',
     },
     shadow: {
       shadowColor: '#000',
@@ -28,7 +28,7 @@ const SvgButton = ({children, label, background, onPress}) => {
       height: 30,
     },
     label: {
-      color: COLORS.color5,
+      color: COLORS.secondaryLight,
       textTransform: 'uppercase',
       marginTop: 15,
     },

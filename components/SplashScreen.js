@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {COLORS} from '../styles/defaultColors';
 import icon from '../assets/icons/beverage.png';
+import {useHeaderHeight} from '@react-navigation/elements';
 
 const {width, height} = Dimensions.get('window');
 
@@ -28,6 +29,7 @@ function Splashscreen({onEnd}) {
   const opacityTitle1 = useRef(new Animated.Value(0)).current;
   const opacityTitle2 = useRef(new Animated.Value(0)).current;
   const opacityOverlay = useRef(new Animated.Value(0)).current;
+  const headerHeight = useHeaderHeight();
 
   useEffect(() => {
     setTimeout(() => {
@@ -105,7 +107,7 @@ function Splashscreen({onEnd}) {
   }
 
   return (
-    <View style={styles.splashScreen}>
+    <View style={[styles.splashScreen, {top: -headerHeight}]}>
       <Animated.View
         style={[
           styles.line,
@@ -173,7 +175,7 @@ export default Splashscreen;
 const styles = StyleSheet.create({
   splashScreen: {
     position: 'absolute',
-    top: 0,
+    // top: 0,
     bottom: 0,
     right: 0,
     left: 0,
@@ -181,6 +183,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: COLORS.background,
   },
   overlay: {
     position: 'absolute',
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
   line: {
     width,
     height: LINE_HEIGHT,
-    backgroundColor: COLORS.color0,
+    backgroundColor: COLORS.secondaryLight,
     marginVertical: MARGIN,
     position: 'absolute',
     left: 0,

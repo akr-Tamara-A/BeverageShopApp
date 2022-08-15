@@ -55,7 +55,7 @@ function VerifyPhoneNumberScreen({navigation}) {
       <View style={styles.screen}>
         <View style={styles.info}>
           <View style={styles.icon}>
-            <IconMessage fill={COLORS.color8} />
+            <IconMessage fill={COLORS.primaryDark} />
           </View>
           <View style={styles.title}>
             <TitleBoldText textColor="light">
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 60,
     height: 60,
-    backgroundColor: COLORS.color10,
+    backgroundColor: COLORS.secondaryLight,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
   input: {
     margin: SPACING,
-    backgroundColor: COLORS.color2,
+    backgroundColor: COLORS.secondaryLight,
     borderRadius: 10,
     paddingHorizontal: SPACING * 2,
     paddingVertical: SPACING,

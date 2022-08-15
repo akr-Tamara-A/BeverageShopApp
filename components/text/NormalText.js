@@ -8,7 +8,7 @@ const NormalText = ({children, style, textColor}) => {
       fontFamily: 'QuattrocentoSans-Regular',
       fontWeight: 'normal',
       fontSize: 16,
-      color: textColor === 'light' ? COLORS.color9 : COLORS.color8,
+      color: textColor === 'light' ? COLORS.primaryLight : COLORS.primaryDark,
     },
   });
 

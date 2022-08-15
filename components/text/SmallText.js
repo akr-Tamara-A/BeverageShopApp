@@ -9,7 +9,7 @@ const SmallText = ({children, style, textColor}) => {
       fontWeight: 'normal',
       fontSize: 14,
       lineHeight: 20,
-      color: textColor === 'light' ? COLORS.color9 : COLORS.color8,
+      color: textColor === 'light' ? COLORS.primaryLight : COLORS.primaryDark,
     },
   });
 

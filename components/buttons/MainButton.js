@@ -6,9 +6,9 @@ import BoldText from '../text/BoldText';
 const MainButton = ({title, onPress, disabled}) => {
   const styles = StyleSheet.create({
     button: {
-      borderColor: disabled ? COLORS.color7 : COLORS.color8,
+      borderColor: disabled ? COLORS.background : COLORS.primaryDark,
       borderWidth: 5,
-      backgroundColor: disabled ? COLORS.color7 : COLORS.color8,
+      backgroundColor: disabled ? COLORS.background : COLORS.primaryDark,
       paddingHorizontal: 50,
       paddingVertical: 10,
       justifyContent: 'center',
@@ -17,7 +17,7 @@ const MainButton = ({title, onPress, disabled}) => {
       borderRadius: 2,
     },
     text: {
-      color: COLORS.color9,
+      color: COLORS.primaryLight,
       textTransform: 'uppercase',
     },
   });

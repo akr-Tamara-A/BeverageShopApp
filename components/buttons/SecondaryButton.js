@@ -6,8 +6,8 @@ import BoldText from '../text/BoldText';
 const SecondaryButton = ({title, onPress, disabled}) => {
   const styles = StyleSheet.create({
     button: {
-      borderColor: COLORS.color7,
-      backgroundColor: COLORS.background,
+      borderColor: COLORS.background,
+      backgroundColor: COLORS.backgroundTransparent,
       borderWidth: 5,
       paddingHorizontal: 50,
       paddingVertical: 10,
@@ -25,7 +25,7 @@ const SecondaryButton = ({title, onPress, disabled}) => {
       elevation: 4,
     },
     text: {
-      color: COLORS.color9,
+      color: COLORS.primaryLight,
       textTransform: 'uppercase',
     },
   });

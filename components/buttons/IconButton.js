@@ -11,7 +11,7 @@ const IconButton = ({icon, label, onPress}) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 3,
-      backgroundColor: COLORS.color7,
+      backgroundColor: COLORS.accent,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -26,7 +26,7 @@ const IconButton = ({icon, label, onPress}) => {
       height: 30,
     },
     label: {
-      color: COLORS.color5,
+      color: COLORS.primaryLight,
       textTransform: 'uppercase',
       marginTop: 15,
     },

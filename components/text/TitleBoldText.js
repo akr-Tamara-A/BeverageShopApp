@@ -9,7 +9,7 @@ const TitleBoldText = ({children, style, textColor}) => {
       fontWeight: 'bold',
       fontSize: 24,
       lineHeight: 32,
-      color: textColor === 'light' ? COLORS.color9 : COLORS.color8,
+      color: textColor === 'light' ? COLORS.primaryLight : COLORS.primaryDark,
     },
   });
 

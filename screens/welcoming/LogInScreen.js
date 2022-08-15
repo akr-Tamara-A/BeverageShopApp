@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 20,
-    borderColor: COLORS.color10,
+    borderColor: COLORS.secondaryLight,
     borderWidth: 2,
   },
   wraper: {
@@ -210,8 +210,8 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: MODAL_WIDTH,
     height: MODAL_HEIGHT,
-    backgroundColor: COLORS.color10,
-    justifyContent: 'center',
+    backgroundColor: COLORS.accent,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingVertical: 20,
     shadowColor: '#000',

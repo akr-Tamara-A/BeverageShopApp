@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   imageWrapper: {
     padding: 20,
-    backgroundColor: COLORS.color0,
+    backgroundColor: COLORS.accent,
   },
   image: {
     height: windowHeight / 2,

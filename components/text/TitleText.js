@@ -8,7 +8,7 @@ const TitleText = ({children, style, textColor}) => {
       fontFamily: 'Quattrocento-Regular',
       fontWeight: 'normal',
       fontSize: 24,
-      color: textColor === 'light' ? COLORS.color9 : COLORS.color8,
+      color: textColor === 'light' ? COLORS.primaryLight : COLORS.primaryDark,
     },
   });
 
