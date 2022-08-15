@@ -4,9 +4,10 @@ import {COLORS} from './defaultColors';
 export const headerBarStyle = () => {
   return {
     headerStyle: {
-      backgroundColor: COLORS.background,
+      backgroundColor: 'transparent',
     },
-    headerTintColor: COLORS.color9,
+    headerTransparent: true,
+    headerTintColor: COLORS.primaryLight,
     headerTitleStyle: {
       fontWeight: 'bold',
       fontFamily: 'Quattrocento-Regular',

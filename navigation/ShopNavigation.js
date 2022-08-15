@@ -10,6 +10,7 @@ import RecentPurchasesScreen from '../screens/shop/RecentPurchasesScreen';
 import ProductItemScreen from '../screens/shop/ProductItemScreen';
 import OfferScreen from '../screens/shop/OfferScreen';
 import SearchScreen from '../screens/shop/SearchScreen';
+import {headerBarStyle} from '../styles/headerBarStyle';
 
 const ShopStack = createNativeStackNavigator();
 
@@ -25,7 +26,7 @@ export default function ShopNavigation({route, navigation}) {
   }, [navigation, route]);
 
   return (
-    <ShopStack.Navigator>
+    <ShopStack.Navigator screenOptions={headerBarStyle}>
       <ShopStack.Screen name="Shop" component={ShopScreen} />
       <ShopStack.Screen name="Categories" component={CategoriesScreen} />
       <ShopStack.Screen name="SubCategories" component={SubCategoriesScreen} />
