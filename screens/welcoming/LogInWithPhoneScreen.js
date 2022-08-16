@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import ScreenView from '../../components/Screen';
 import SmallText from '../../components/text/SmallText';
-import BoldText from '../../components/text/BoldText';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import {COLORS} from '../../styles/defaultColors';
 import {IconCall} from '../../components/icons/UXIcons';
 import {phoneStyling} from '../../utils/utils';
+import StyledInput from '../../components/StyledInput';
 
 const SPACING = 10;
 
@@ -44,22 +44,15 @@ function LogInWithPhoneScreen({navigation}) {
             We`ll check if you have an account
           </SmallText>
         </View>
-        <View>
-          <BoldText textColor="light">Mobile number</BoldText>
-          <View>
-            <View style={styles.inputIcon}>
-              <IconCall fill={COLORS.primaryDark} height={30} width={30} />
-            </View>
-            <TextInput
-              style={styles.input}
-              placeholder="(000) 000-0000"
-              placeholderTextColor={COLORS.backgroundTransparent}
-              keyboardType="phone-pad"
-              value={mobileNumber}
-              onChangeText={handleChangeText}
-            />
-          </View>
-        </View>
+        <StyledInput
+          keyboardType="phone-pad"
+          value={mobileNumber}
+          onChangeText={handleChangeText}
+          label="Mobile number"
+          placeholder="(000) 000-0000"
+          icon={<IconCall fill={COLORS.primaryDark} height={30} width={30} />}
+          iconPosition="left"
+        />
         <MainButton
           title="Continue"
           disabled={disabled}
@@ -93,20 +86,5 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: SPACING,
-  },
-  input: {
-    marginBottom: SPACING * 2,
-    backgroundColor: COLORS.secondaryLight,
-    borderRadius: 10,
-    paddingLeft: SPACING * 5,
-    paddingRight: SPACING * 2,
-    paddingVertical: SPACING,
-    fontSize: 20,
-  },
-  inputIcon: {
-    position: 'absolute',
-    top: 8,
-    left: 8,
-    zIndex: 5,
   },
 });

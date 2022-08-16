@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import SmallText from '../../components/text/SmallText';
 import NormalText from '../../components/text/NormalText';
@@ -8,6 +8,7 @@ import {IconMessage} from '../../components/icons/UXIcons';
 import {COLORS} from '../../styles/defaultColors';
 import MainButton from '../../components/buttons/MainButton';
 import SecondaryButton from '../../components/buttons/SecondaryButton';
+import StyledInput from '../../components/StyledInput';
 
 const phoneNumber = '(000)000-0000';
 const SPACING = 10;
@@ -68,19 +69,19 @@ function VerifyPhoneNumberScreen({navigation}) {
           <SmallText textColor="light">{phoneNumber}</SmallText>
         </View>
         <View style={styles.inputsConteiner}>
-          {inputsRef.map((item, index) => {
+          {inputsRef.map((_, index) => {
             return (
-              <TextInput
-                key={index}
-                ref={r => (inputsRef[index] = r)}
-                style={styles.input}
-                maxLength={1}
-                keyboardType="numeric"
-                value={code && code[index]}
-                onChangeText={value => {
-                  index < 3 ? handleChange(value, index) : handleLast(value);
-                }}
-              />
+              <View style={styles.input} key={index}>
+                <StyledInput
+                  ref={r => (inputsRef[index] = r)}
+                  maxLength={1}
+                  keyboardType="numeric"
+                  value={code && code[index]}
+                  onChangeText={value => {
+                    index < 3 ? handleChange(value, index) : handleLast(value);
+                  }}
+                />
+              </View>
             );
           })}
         </View>
@@ -131,13 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    margin: SPACING,
-    backgroundColor: COLORS.secondaryLight,
-    borderRadius: 10,
-    paddingHorizontal: SPACING * 2,
-    paddingVertical: SPACING,
-    fontSize: 20,
-    textAlign: 'center',
+    marginHorizontal: SPACING,
   },
   bottomBlock: {
     flex: 1,

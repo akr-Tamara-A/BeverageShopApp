@@ -2,17 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   View,
-  TextInput,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  Image,
   Modal,
   Dimensions,
 } from 'react-native';
 import ScreenView from '../../components/Screen';
 import SmallText from '../../components/text/SmallText';
-import BoldText from '../../components/text/BoldText';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import {COLORS} from '../../styles/defaultColors';
@@ -23,6 +20,7 @@ import iconViewPassword from '../../assets/icons/view.png';
 import iconHidePassword from '../../assets/icons/hide.png';
 import SvgButton from '../../components/buttons/SvgButton';
 import SecondaryButton from '../../components/buttons/SecondaryButton';
+import StyledInput from '../../components/StyledInput';
 
 const {width, height} = Dimensions.get('window');
 
@@ -37,7 +35,7 @@ function SighInScreen({navigation}) {
   const [password, onChangePassword] = useState('');
   const [viewPassword, setViewPassword] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const state =
@@ -85,60 +83,38 @@ function SighInScreen({navigation}) {
               <SmallText textColor="light">First, create an account</SmallText>
             </View>
             <View>
-              <BoldText textColor="light">Mobile number</BoldText>
-              <View>
-                <View style={[styles.inputIcon, styles.inputIconLeft]}>
+              <StyledInput
+                keyboardType="phone-pad"
+                value={mobileNumber}
+                onChangeText={handleChangePhone}
+                label="Mobile number"
+                placeholder="(000) 000-0000"
+                icon={
                   <IconCall fill={COLORS.primaryDark} height={30} width={30} />
-                </View>
-                <TextInput
-                  style={[styles.input, styles.inputLeftIcon]}
-                  placeholder="(000) 000-0000"
-                  placeholderTextColor={COLORS.backgroundTransparent}
-                  keyboardType="phone-pad"
-                  value={mobileNumber}
-                  onChangeText={handleChangePhone}
-                />
-              </View>
-            </View>
-            <View>
-              <View style={styles.label}>
-                <BoldText textColor="light">Full name</BoldText>
-                <SmallText textColor="light">Minimum 4 characters</SmallText>
-              </View>
-              <View>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="default"
-                  value={fullName}
-                  onChangeText={handleChangeFullName}
-                />
-              </View>
-            </View>
-            <View>
-              <View style={styles.label}>
-                <BoldText textColor="light">Password</BoldText>
-                <SmallText textColor="light">Minimum 8 characters</SmallText>
-              </View>
-              <View>
-                <TextInput
-                  style={[styles.input, styles.inputRightIcon]}
-                  keyboardType="default"
-                  secureTextEntry={!viewPassword}
-                  value={password}
-                  onChangeText={handleChangePassword}
-                />
-                <View style={[styles.inputIcon, styles.inputIconRight]}>
-                  <TouchableWithoutFeedback
-                    onPress={() => setViewPassword(!viewPassword)}>
-                    <Image
-                      source={
-                        viewPassword ? iconViewPassword : iconHidePassword
-                      }
-                      style={{width: 36, height: 36}}
-                    />
-                  </TouchableWithoutFeedback>
-                </View>
-              </View>
+                }
+                iconPosition="left"
+              />
+              <StyledInput
+                keyboardType="default"
+                label="Full name"
+                info="Minimum 4 characters"
+                value={fullName}
+                onChangeText={handleChangeFullName}
+              />
+              <StyledInput
+                keyboardType="default"
+                label="Password"
+                info="Minimum 8 characters"
+                value={password}
+                onChangeText={handleChangePassword}
+                secureTextEntry={!viewPassword}
+                button={true}
+                buttonPosition="right"
+                buttonIconSrc={
+                  viewPassword ? iconViewPassword : iconHidePassword
+                }
+                buttonOnPress={() => setViewPassword(!viewPassword)}
+              />
             </View>
             <MainButton
               title="Continue"
@@ -203,35 +179,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: SPACING,
-  },
-  label: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  input: {
-    marginBottom: SPACING * 2,
-    backgroundColor: COLORS.secondaryLight,
-    borderRadius: 10,
-    paddingHorizontal: SPACING * 2,
-    paddingVertical: SPACING,
-    fontSize: 20,
-  },
-  inputLeftIcon: {
-    paddingLeft: SPACING * 5,
-  },
-  inputRightIcon: {
-    paddingRight: SPACING * 5,
-  },
-  inputIcon: {
-    position: 'absolute',
-    top: 8,
-    zIndex: 5,
-  },
-  inputIconLeft: {
-    left: 8,
-  },
-  inputIconRight: {
-    right: 8,
   },
   modal: {
     justifyContent: 'center',
