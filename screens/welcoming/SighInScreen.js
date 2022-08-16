@@ -5,8 +5,6 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  Modal,
-  Dimensions,
 } from 'react-native';
 import ScreenView from '../../components/Screen';
 import SmallText from '../../components/text/SmallText';
@@ -14,19 +12,13 @@ import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import {COLORS} from '../../styles/defaultColors';
 import {IconCall} from '../../components/icons/UXIcons';
-import {IconClose} from '../../components/icons/UIIcons';
 import {phoneStyling} from '../../utils/utils';
 import iconViewPassword from '../../assets/icons/view.png';
 import iconHidePassword from '../../assets/icons/hide.png';
-import SvgButton from '../../components/buttons/SvgButton';
-import SecondaryButton from '../../components/buttons/SecondaryButton';
 import StyledInput from '../../components/StyledInput';
-
-const {width, height} = Dimensions.get('window');
+import StyledModal from '../../components/StyledModal';
 
 const SPACING = 10;
-const MODAL_WIDTH = width * 0.8;
-const MODAL_HEIGHT = height * 0.7;
 
 function SighInScreen({navigation}) {
   const [disabled, setDisabled] = useState(true);
@@ -124,34 +116,13 @@ function SighInScreen({navigation}) {
               }}
             />
           </View>
-          <Modal
-            animationType="fade"
-            transparent={true}
+          <StyledModal
             visible={modalVisible}
-            onRequestClose={() => {
-              setModalVisible(!modalVisible);
-            }}>
-            <View style={styles.modal}>
-              <View style={styles.modalContainer}>
-                <View style={styles.closeButton}>
-                  <SvgButton
-                    background={false}
-                    icon={IconClose}
-                    onPress={() => {
-                      setModalVisible(false);
-                    }}>
-                    <IconClose />
-                  </SvgButton>
-                </View>
-                <TitleBoldText>Something went wrong</TitleBoldText>
-                <TitleBoldText>Try again</TitleBoldText>
-                <SecondaryButton
-                  title="Try again"
-                  onPress={() => setModalVisible(false)}
-                />
-              </View>
-            </View>
-          </Modal>
+            onClose={() => setModalVisible(false)}
+            messages={['Something went wrong', 'Try again']}
+            buttonTitle="Try again"
+            buttonOnPress={() => setModalVisible(false)}
+          />
         </ScreenView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -179,32 +150,5 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: SPACING,
-  },
-  modal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  closeButton: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-  },
-  modalContainer: {
-    width: MODAL_WIDTH,
-    height: MODAL_HEIGHT,
-    backgroundColor: COLORS.accent,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    paddingVertical: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
   },
 });

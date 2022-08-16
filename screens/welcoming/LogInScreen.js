@@ -1,26 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Animated,
-  StyleSheet,
-  View,
-  Easing,
-  Modal,
-  Dimensions,
-} from 'react-native';
+import {Animated, StyleSheet, View, Easing} from 'react-native';
 import ScreenView from '../../components/Screen';
 import NormalText from '../../components/text/NormalText';
-import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import SecondaryButton from '../../components/buttons/SecondaryButton';
-import SvgButton from '../../components/buttons/SvgButton';
 import IconButton from '../../components/buttons/IconButton';
 import {COLORS} from '../../styles/defaultColors';
-import {IconClose} from '../../components/icons/UIIcons';
-
-const {width, height} = Dimensions.get('window');
-
-const MODAL_WIDTH = width * 0.8;
-const MODAL_HEIGHT = height * 0.7;
+import StyledModal from '../../components/StyledModal';
 
 function LogInWithPhoneScreen({navigation}) {
   const translateYa = new Animated.Value(0);
@@ -130,39 +116,20 @@ function LogInWithPhoneScreen({navigation}) {
           onPress={() => navigation.navigate('Sigh In')}
         />
       </View>
-      <Modal
-        animationType="fade"
-        transparent={true}
+      <StyledModal
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.modal}>
-          <View style={styles.modalContainer}>
-            <View style={styles.closeButton}>
-              <SvgButton
-                background={false}
-                icon={IconClose}
-                onPress={() => {
-                  setModalVisible(false);
-                  setAuthorization('');
-                }}>
-                <IconClose />
-              </SvgButton>
-            </View>
-            <TitleBoldText>This is fake authorization</TitleBoldText>
-            <TitleBoldText>{authorization}</TitleBoldText>
-            <MainButton
-              title="Click to fake log in"
-              onPress={() => {
-                setModalVisible(false);
-                setAuthorization('');
-                navigation.navigate('App');
-              }}
-            />
-          </View>
-        </View>
-      </Modal>
+        onClose={() => {
+          setModalVisible(false);
+          setAuthorization('');
+        }}
+        messages={['This is fake authorization', authorization]}
+        buttonTitle="Click to fake log in"
+        buttonOnPress={() => {
+          setModalVisible(false);
+          setAuthorization('');
+          navigation.navigate('App');
+        }}
+      />
     </ScreenView>
   );
 }
@@ -196,32 +163,5 @@ const styles = StyleSheet.create({
   sighUpButton: {
     margin: 40,
     alignItems: 'center',
-  },
-  modal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  closeButton: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-  },
-  modalContainer: {
-    width: MODAL_WIDTH,
-    height: MODAL_HEIGHT,
-    backgroundColor: COLORS.accent,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    paddingVertical: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
   },
 });
