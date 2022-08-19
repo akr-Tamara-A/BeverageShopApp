@@ -1,36 +1,28 @@
-import React, {useState, useLayoutEffect} from 'react';
-import ScreenView from '../../components/Screen';
+import React, {useState} from 'react';
 import Splashscreen from '../../components/SplashScreen';
 import Slyder from '../../components/Slyder';
-import {COLORS} from '../../styles/defaultColors';
 import {View} from 'react-native';
 
 const onboardingData = [
   {
-    imageUrl: require('../../assets/images/cocktail-sm.jpg'),
-    heading: 'Find ingredients for cocktail',
+    imageUrl: require('../../assets/images/cocktail-base.jpg'),
+    heading: 'Find ingredients for your favorite cocktail',
     key: 'first',
   },
   {
-    imageUrl: require('../../assets/images/wine-sm.jpg'),
-    heading: 'Order some wine or beer',
+    imageUrl: require('../../assets/images/wine-base.jpg'),
+    heading: 'Order some wine or beer for dinner',
     key: 'second',
   },
   {
-    imageUrl: require('../../assets/images/store-sm.jpg'),
-    heading: 'Or drop by in one of our stores',
+    imageUrl: require('../../assets/images/store-base.jpg'),
+    heading: 'Or just drop by in one of our stores',
     key: 'third',
   },
 ];
 
 function OnboardingScreen({navigation}) {
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: onboardingData[0].heading,
-    });
-  }, [navigation, isLoaded]);
 
   function handleOnEnd(bool) {
     if (bool) {
@@ -39,13 +31,13 @@ function OnboardingScreen({navigation}) {
   }
 
   return (
-    <ScreenView>
+    <View style={{flex: 1}}>
       {isLoaded ? (
         <Slyder data={onboardingData} />
       ) : (
         <Splashscreen onEnd={handleOnEnd} />
       )}
-    </ScreenView>
+    </View>
   );
 }
 export default OnboardingScreen;
