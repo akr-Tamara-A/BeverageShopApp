@@ -1,26 +1,45 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   View,
   StyleSheet,
-  TextInput,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import SmallText from '../../components/text/SmallText';
 import BoldText from '../../components/text/BoldText';
 import TitleBoldText from '../../components/text/TitleBoldText';
 import MainButton from '../../components/buttons/MainButton';
 import {COLORS} from '../../styles/defaultColors';
 import ScreenView from '../../components/Screen';
 import {IconHomePin} from '../../components/icons/UXIcons';
+import StyledInput from '../../components/StyledInput';
+import StyledModal from '../../components/StyledModal';
 
 const SPACING = 10;
 
 function LocationScreen({navigation}) {
   const [city, setCity] = useState('');
   const [address, setAddress] = useState('');
-  const [disabled, setDisabled] = useState(true);
+  const [isDataEntered, setIsDataEntered] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [error, setError] = useState(false);
+
+  /** */
+  useEffect(() => {
+    const isDataVerified = city.length >= 3 && address.length >= 5;
+    if (isDataVerified) {
+      setIsDataEntered(true);
+    } else {
+      setIsDataEntered(false);
+    }
+  }, [city, address]);
+
+  /** */
+  useEffect(() => {
+    error && setModalVisible(true);
+  }, [error]);
+
+  /** */
   return (
     <KeyboardAvoidingView
       behavior={'position'}
@@ -28,12 +47,7 @@ function LocationScreen({navigation}) {
       contentContainerStyle={{flex: 1}}
       style={{flex: 1}}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScreenView
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <ScreenView style={styles.centeredView}>
           <View style={styles.screen}>
             <View style={styles.info}>
               <View style={styles.icon}>
@@ -44,31 +58,40 @@ function LocationScreen({navigation}) {
                   Please enter a shipping address
                 </TitleBoldText>
               </View>
-              {/* <SmallText textColor="light">This can be done later</SmallText> */}
             </View>
-            <View>
-              <BoldText textColor="light">City</BoldText>
-              <View>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="default"
-                  value={city}
-                  onChangeText={setCity}
-                />
+            <StyledInput
+              keyboardType="default"
+              label="City"
+              value={city}
+              onChangeText={setCity}
+            />
+            <StyledInput
+              keyboardType="default"
+              label="Address"
+              value={address}
+              onChangeText={setAddress}
+            />
+            <View style={styles.buttonBlock}>
+              <View style={styles.messageBlock}>
+                {!isDataEntered && (
+                  <BoldText textColor="light">
+                    Or this can be done later
+                  </BoldText>
+                )}
               </View>
-            </View>
-            <View>
-              <BoldText textColor="light">Address</BoldText>
-              <View>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="default"
-                  value={address}
-                  onChangeText={setAddress}
-                />
-              </View>
+              <MainButton
+                title={isDataEntered ? 'Dive into shopping' : 'View products'}
+                onPress={() => navigation.navigate('App')}
+              />
             </View>
           </View>
+          <StyledModal
+            visible={modalVisible}
+            onClose={() => setModalVisible(false)}
+            messages={['Something went wrong', 'Try again']}
+            buttonTitle="Try again"
+            buttonOnPress={() => setModalVisible(false)}
+          />
         </ScreenView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -78,6 +101,11 @@ function LocationScreen({navigation}) {
 export default LocationScreen;
 
 const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   screen: {
     height: '80%',
     width: '80%',
@@ -110,5 +138,12 @@ const styles = StyleSheet.create({
     top: 8,
     left: 8,
     zIndex: 5,
+  },
+  buttonBlock: {
+    marginTop: 60,
+  },
+  messageBlock: {
+    alignItems: 'center',
+    height: 24,
   },
 });
