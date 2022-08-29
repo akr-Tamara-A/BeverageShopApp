@@ -7,10 +7,11 @@ export const headerBarStyle = () => {
       backgroundColor: 'transparent',
     },
     headerTransparent: true,
-    headerTintColor: COLORS.primaryLight,
+    headerTintColor: COLORS.secondaryLight,
     headerTitleStyle: {
       fontWeight: 'bold',
       fontFamily: 'Quattrocento-Regular',
     },
+    headerTitleAlign: 'center',
   };
 };

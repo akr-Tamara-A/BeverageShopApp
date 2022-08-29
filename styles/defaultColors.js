@@ -9,4 +9,7 @@ export const COLORS = {
   primaryDark: '#000000',
   primaryLight: '#fffeff',
   secondaryLight: '#eae6dd',
+  badges: 'brown',
+  discount: 'brown',
+  mostRated: 'cadetblue',
 };
